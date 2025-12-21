@@ -1,49 +1,48 @@
 import { Chat } from "@/components/chat"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { VehicleStatus } from "@/components/vehicle-status"
 import { FlightMap } from "@/components/flight-map"
 import Image from "next/image"
 
 export default function Home() {
   return (
-    <ThemeProvider defaultTheme="light" storageKey="ardupilot-theme">
-      <main className="flex min-h-screen flex-col items-center justify-between p-4 md:p-8">
-        <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm flex">
-          <div className="flex items-center space-x-2">
-            <Image src="/ardupilot_logo.png" alt="ArduPilot Logo" className="h-8 w-auto"
-              width={200}
-              height={50}
-            />
-            <h1 className="text-xl font-bold">ArduPilot AI Assistant</h1>
-          </div>
-          <div className="flex items-center space-x-2">
-            <span className="bg-green-100 text-green-800 px-2 py-1 rounded-md text-xs font-medium">Connected</span>
-          </div>
+    <main className="flex min-h-screen w-full flex-col items-center bg-background px-4 py-6 md:px-8 md:py-10">
+      <header className="flex w-full max-w-6xl items-center justify-between rounded-2xl bg-card/70 px-4 py-3 shadow-sm backdrop-blur md:px-6">
+        <div className="flex items-center gap-3">
+          <Image src="/ardupilot_logo.png" alt="ArduPilot Logo" className="h-10 w-auto"
+            width={200}
+            height={50}
+          />
+          <h1 className="text-xl font-semibold text-foreground md:text-2xl">ArduPilot AI Assistant</h1>
         </div>
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-500 ring-1 ring-emerald-500/30">Connected</span>
+          <ThemeToggle />
+        </div>
+      </header>
 
-        <div className="w-full max-w-5xl flex-1 flex flex-col md:flex-row gap-4 my-8">
-          <div className="flex-1 border rounded-lg shadow-sm overflow-hidden">
-            <div className="bg-slate-100 p-3 border-b">
-              <h2 className="font-medium">Vehicle Status</h2>
-            </div>
-            <div className="p-4">
-              <VehicleStatus />
-            </div>
+      <section className="mt-6 flex w-full max-w-6xl flex-col gap-4 md:mt-8 md:flex-row">
+        <div className="flex-1 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
+          <div className="border-b border-border/60 bg-muted/60 px-4 py-3">
+            <h2 className="text-base font-semibold text-foreground">Vehicle Status</h2>
           </div>
-          <div className="flex-1 border rounded-lg shadow-sm overflow-hidden">
-            <div className="bg-slate-100 p-3 border-b">
-              <h2 className="font-medium">Flight Data</h2>
-            </div>
-            <div className="p-4 h-[300px]">
-              <FlightMap />
-            </div>
+          <div className="p-4 md:p-5">
+            <VehicleStatus />
           </div>
         </div>
+        <div className="flex-1 overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
+          <div className="border-b border-border/60 bg-muted/60 px-4 py-3">
+            <h2 className="text-base font-semibold text-foreground">Flight Data</h2>
+          </div>
+          <div className="p-4 md:p-5 h-[320px]">
+            <FlightMap />
+          </div>
+        </div>
+      </section>
 
-        <div className="w-full max-w-5xl">
-          <Chat />
-        </div>
-      </main>
-    </ThemeProvider>
+      <section className="w-full max-w-6xl mt-4 md:mt-6">
+        <Chat />
+      </section>
+    </main>
   )
 }
