@@ -48,7 +48,7 @@ graph TD;
 
 
 ```shellscript
-git clone https://github.com/craftydivy/ArduPilot-Assistant
+git clone https://github.com/craftydivy/ArduPilot-AI-Assistant.git
 cd ArduPilot-Assistant
 ```
 
