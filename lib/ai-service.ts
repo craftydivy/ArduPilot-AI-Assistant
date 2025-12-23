@@ -160,19 +160,19 @@ export class AIService {
             await mavlink.disarm()
             break
           case "takeoff":
-            await mavlink.takeoff(action.params?.altitude || 10)
+            await mavlink.takeoff((action.params?.altitude as number) || 10)
             break
           case "rtl":
             await mavlink.returnToLaunch()
             break
           case "setMode":
-            await mavlink.setMode(action.params?.mode || "GUIDED")
+            await mavlink.setMode((action.params?.mode as string) || "GUIDED")
             break
           case "flyTo":
             await mavlink.flyTo(
-              action.params?.lat || mavlink.getState().latitude,
-              action.params?.lon || mavlink.getState().longitude,
-              action.params?.alt || mavlink.getState().altitude,
+              (action.params?.lat as number) || mavlink.getState().latitude,
+              (action.params?.lon as number) || mavlink.getState().longitude,
+              (action.params?.alt as number) || mavlink.getState().altitude,
             )
             break
         }
