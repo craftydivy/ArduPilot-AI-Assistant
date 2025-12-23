@@ -15,7 +15,7 @@ export type AIResponse = {
 
 export type AIAction = {
   type: "arm" | "disarm" | "takeoff" | "land" | "rtl" | "flyTo" | "setMode"
-  params?: Record<string, any>
+  params?: Record<string, unknown>
 }
 
 export class AIService {

@@ -17,7 +17,7 @@ declare global {
     stop(): void
     onresult: (event: SpeechRecognitionEvent) => void
     onend: () => void
-    onerror: (event: any) => void
+    onerror: (event: SpeechRecognitionEvent) => void
   }
 
   interface SpeechRecognitionEvent {

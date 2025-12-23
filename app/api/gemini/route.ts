@@ -1,4 +1,3 @@
-import type { NextRequest } from 'next/server'
 import type { VehicleState } from '@/lib/mavlink-interface'
 
 type Message = {
@@ -10,7 +9,7 @@ type Message = {
 
 type AIResponse = {
   text: string
-  actions?: Array<{ type: string; params?: Record<string, any> }>
+  actions?: Array<{ type: string; params?: Record<string, unknown> }>
 }
 
 const SYSTEM_PROMPT = `
@@ -113,7 +112,7 @@ export async function POST(req: Request) {
     const aiResponse: AIResponse = parsed
 
     return new Response(JSON.stringify(aiResponse), { status: 200 })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in /api/gemini:', error)
     return new Response(JSON.stringify({ error: String(error) }), { status: 500 })
   }
